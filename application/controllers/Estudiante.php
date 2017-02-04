@@ -426,9 +426,9 @@ class Estudiante extends CI_Controller {
     public function form_control_asistencia() {
         $this->autenticacion();
         $data = array(
-            'cursos' => $this->estudiante_mdl->getAllCursos(),
             'faltas' => $this->estudiante_mdl->getAllTipoFaltas(),
             'materias' => $this->estudiante_mdl->getAllMaterias(),
+            'cursos' => $this->allEstudiantesByCurso(),
             //'estudiantes' => $this->estudiante_mdl->getAllEstudiantesByIdCurso(8),
             //'estudiantes' => $this->estudiante_mdl->getAllEstudiantes()
         );
@@ -442,10 +442,15 @@ class Estudiante extends CI_Controller {
     }
 
     public function guardar_registro_asistencia() {
+        $observacion=  $this->input->post('observacion');
+        //$observacion=$_REQUEST['observacion'];
+        $materia=  $this->input->post('materia');
+        echo "observacion: ".$observacion."<br>";
+        echo "materia: ".$materia."<br>";
         $data = array(
             'mensaje' => 'Los datos se han registrado correctamente.'
         );
-        $this->load->view('estudiante/modal/mod_mensajes.php', $data);
+        //$this->load->view('estudiante/modal/mod_mensajes.php', $data);
     }
 
 //**** FIN CONTROL DE ASISTENCIA ****//

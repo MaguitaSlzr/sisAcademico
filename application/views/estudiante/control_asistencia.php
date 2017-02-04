@@ -3,7 +3,7 @@
 <h3 class="tituloPrincipal">CONTROL DE ASISTENCIA</h3>
 
 <div class="row">
-  <form id="form-curso-estudiantes" action="<?php echo base_url(); ?>estudiante/curso_estudiantes" method="post">
+  <form id="form-curso-estudiantes" action="<?php echo base_url(); ?>estudiante/guardar_registro_asistencia" method="post">
 	<div class="col-md-5">
 		<div class="panel panel-primary">
 		  <div class="panel-heading">
@@ -14,40 +14,27 @@
 		  <div class="panel-body panel-lista-curso">
 		    <div class="form-group">
 		        <label for="curso">Seleccione un Curso:</label>
-		        <select id="curso" name="curso" class="form-control">
-		        	<option value="0">-- Seleccione un curso --</option>
-		        	<?php foreach ($cursos as $c) {?>
-		        		<option value="<?php echo $c->cur_id;?>"><?php echo $c->cur_descripcion.', PARALELO: '.$c->cur_paralelo;?></option>
-		        	<?php } ?>
-		        </select>
+		        <input id="urlListEstByCurso" type="hidden" value="<?php echo base_url(); ?>estudiante/lista_estudiantes_por_curso"/>
+                        <select id="selCurso" class="form-control">
+                            <?php foreach ($cursos as $c) { ?>
+                                <option value="<?php echo $c['curso']->cur_id; ?>"><?php echo $c['curso']->cur_descripcion; ?></option>
+                            <?php } ?>    
+                        </select>
 		    </div>
-		    <div id="lista-estudiantes">
-			    <?php if(isset($estudiantes)){ ?>
-				<table class="table">
-			    	<tr>
-			    		<th></th>
-			    		<th>#</th>
-			    		<th>Nombre Completo</th>
-			    	</tr>
-			    	<?php foreach ($estudiantes as $e) { ?>
-			    		<tr>
-			    			<th><input type="checkbox" name="estid" value="<?php echo $e->est_id; ?>"></th>
-			    			<td></td>
-			    			<td><?php echo $e->est_paterno.' '.$e->est_materno.' '.$e->est_nombre; ?></td>
-			    		</tr>
-			    	<?php } ?>
-			    </table>
-			    <?php }else{ ?>
-			    	No existen estudiantes encontrados
-			    <?php } ?>
-		    </div>
+		    <div class="pnlListEstudiantes">                
+                        <?php $i = 1; ?>
+                        <?php foreach ($cursos[0]['estudiantes'] as $e) { ?>
+                            <ul id="check-list-box" class="list-group checked-list-box">
+                                <li class="list-group-item est-item" id="<?php echo $i ?>" value="<?php echo $e->est_id ?>"><span class="est-nombre"><?php echo ($i++) . '. ' . $e->est_paterno . ' ' . $e->est_materno . ' ' . $e->est_nombre; ?></span></li>
+                            </ul>
+                        <?php } ?>       
+                    </div>
 		  </div>
 		</div>
 	</div>
-  </form>
 
 	<div class="col-md-7">
-		<form action="">
+
 			
 			<div class="panel panel-primary">
 			  <div class="panel-heading">
@@ -56,9 +43,11 @@
 			  	</h3>
 			  </div>
 			  <div class="panel-body">
-			  	<table class="table table-est-seleccionados">
-			  		
-			  	</table>
+			  	<div class="media">
+                                    <ul id="est-list-box" class="list-group">
+                                        <!-- ESTUDIANTES SELECCIONADOS -->
+                                    </ul>
+                                </div>
 			  </div>
 			</div>
 			
