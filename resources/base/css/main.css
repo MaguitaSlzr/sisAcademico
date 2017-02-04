@@ -1,0 +1,204 @@
+html, 
+body{
+    height: 100%;
+    background-image: url(../img/fondo.jpg);
+    /* Nos aseguramos que la imagen de fondo este centrada vertical y
+    horizontalmente en todo momento */
+    background-position: center center;
+
+    /* La imagen de fondo no se repite */
+    background-repeat: no-repeat;
+
+    /* La imagen de fondo está fija en el viewport, de modo que no se mueva cuando
+     la altura del contenido supere la altura de la imagen. */
+    background-attachment: fixed;
+
+    /* La imagen de fondo se reescala cuando se cambia el ancho de ventana
+     del navegador */
+    background-size: cover;
+
+    /* Fijamos un color de fondo para que se muestre mientras se está
+    cargando la imagen de fondo o si hay problemas para cargarla  */
+    background-color: #464646;
+}
+.wrapper {
+    display: table;
+    height: 100%;
+    width: 100%;
+}
+.content {
+    display: table-row;  /* height is dynamic, and will expand... */
+    height: 100%;        /* ...as content is added (won't scroll) */
+}
+.footer {
+    display: table-row;
+}
+.container-login{
+	padding-top: 10px;
+    border-radius: 20px 20px 20px 20px;
+    -moz-border-radius: 20px 20px 20px 20px;
+    -webkit-border-radius: 20px 20px 20px 20px;
+    border: 1px solid #b5b5b5;
+}
+.contLogoSystem{
+    margin: 10px;
+    position: absolute;
+}
+.barra{
+    padding-left: 100px;
+}
+.cabecera{
+    margin-bottom: 50px;
+}
+.pie-pagina{
+    text-align: center;
+    background: #111;
+    color: #999;
+    height: 50px;
+    font-size: 9pt;
+    padding-top: 10px;
+    margin: 0px;
+}
+.menu-principal{
+    margin-top: 20px;
+}
+.navbar-nav > li > .dropdown-menu{
+	padding: 0px 0px;
+}
+.dropdown-menu{
+	background: #444;
+}
+.dropdown-menu > .divider{
+	background: #777;
+}
+.dropdown-menu > li > a{
+	color: #ccc;
+}
+.paginador{
+	text-align: center;
+}
+.pagination{
+	margin-top: 0;
+}
+.mensajesDialog{
+	position: absolute; 
+	right: 30px; 
+	top: 80px;
+	width: 300px;	
+}
+.modal-header{
+	background-color: #337ab7;
+    color: #fff;
+}
+.btnVentana{
+	width: 100px;
+}
+.btnLarge{
+    width: 150px;
+}
+.tituloTab{
+	/*font-size: 12pt;*/
+	width: 200px;
+	padding: 15px 10px;
+	/*background-color: #337ab7;*/
+    border: solid 1px #ddd;
+}
+.tabActivo{
+	color: #fff;
+	background-color: #419641;
+}
+.tabDesactivo{
+	color: #777;
+	background-color: #ddd;
+}
+form label.error{
+    font:12px Tahoma,sans-serif;
+    color:#ED7476;
+    margin-left:5px;
+    display:inline;
+}
+.modal-personalizado{
+  height: 100%;
+  padding: 0;
+}
+.tituloPrincipal{
+    padding: 10px 5px;
+    text-align: center;
+    background: #004080;
+    color: #fff;
+    /*background: #ff8000;
+    color: #fff;*/
+}
+/* CARACTERISTICAS DE LA TABLA */
+.table{
+     background: #fff;
+}
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+  background-color: #d9edf7;
+}
+
+th.headerSortUp { 
+    background-image: url(../img/small_asc.gif); 
+    background-repeat: no-repeat;
+    background-position: center right;
+    cursor: pointer;
+    /*background-color: #3399FF; */
+} 
+th.headerSortDown { 
+    background-image: url(../img/small_desc.gif);
+    background-repeat: no-repeat;
+    background-position: center right;
+    cursor: pointer;
+    /*background-color: #3399FF; */
+} 
+table .header {
+    cursor: pointer;
+}
+/* FOTO DE ESTUDIANTE */
+.list{
+    padding-top: 0px;
+}
+.thumb {
+    height: 150px;
+    border: 1px solid #aaa;
+    /*margin: 10px 5px 0 0;*/
+    /*display:block;margin:0 auto 0 auto;*/
+}
+.fotoEstudiante>a:hover{
+     text-decoration:none; 
+}
+.rudeFoto {
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    background: #000;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=75)";
+    filter: alpha(opacity=8);
+    -khtml-opacity: 0.8;
+    -moz-opacity: 0.8;
+    opacity: 0.8;
+    position:relative; 
+    margin-top:-20px;
+    z-index: 1;
+}
+
+/* FORMATO BOTON SUBIR FOTO*/
+.custom-input-file {
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+}
+.custom-input-file .input-file {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    font-size: 10000px;
+    border: 10000px solid transparent;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    position: absolute;
+    right: -1000px;
+    top: -1000px;
+    cursor: pointer;
+}
