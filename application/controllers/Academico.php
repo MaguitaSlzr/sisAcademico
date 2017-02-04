@@ -1,7 +1,7 @@
 <?php
 
 defined('BASEPATH') OR exit('No direct script access allowed');
-
+//msalazar
 class Academico extends CI_Controller {
 
     // Definir un constructor
