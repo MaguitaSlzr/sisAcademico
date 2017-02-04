@@ -38,7 +38,7 @@
 			    	<?php } ?>
 			    </table>
 			    <?php }else{ ?>
-			    	No existen estudiantes
+			    	No existen estudiantes encontrados
 			    <?php } ?>
 		    </div>
 		  </div>
