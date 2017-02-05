@@ -7,5 +7,6 @@
 		</div>
 	</div>
     <script src="<?php echo base_url();?>resources/base/js/main.js"></script>
+    <script src="<?php echo base_url(); ?>resources/base/js/language-es.js"></script>
 </body>
 </html>

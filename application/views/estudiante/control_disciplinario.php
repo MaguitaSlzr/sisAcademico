@@ -100,5 +100,4 @@
         </div>
 </form>
 <script src="<?php echo base_url(); ?>resources/base/js/jquery-ui.min.js"></script>
-<script src="<?php echo base_url(); ?>resources/base/js/language-es.js"></script>
 <script src="<?php echo base_url(); ?>resources/estudiante/js/control_disciplinario.js"></script>

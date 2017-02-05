@@ -1,7 +1,38 @@
 /* INICIO - CODIGO OBLIGATORIO */
 $(function () {
-    $("#fecha").datepicker();
+    $("#fecha").datepicker({
+       onSelect: function(textoFecha, objDatepicker){
+            var sw_fecha=false;
+            $(".content-fechas-atrasos li").each(function(){
+               var fecha=$(this).text();
+               if(fecha==textoFecha){
+                  sw_fecha=true;
+               }
+            });
+            if(!sw_fecha){
+                var out='<li class="list-group-item">'+textoFecha+'</li>';
+                $('.content-fechas-atrasos').append(out);
+            }else{
+                alert("La fecha ya fue agregada.")
+            }
+
+            //objDatepicker.dpDiv.find('.ui-datepicker-current-day a').css('background-color', '#ff0000'); 
+            //alert(objDatepicker.dpDiv.find('.ui-datepicker-current-day a').text());
+            //objDatepicker.dpDiv.find('.ui-datepicker-current-day a').addClass('dia-seleccionado');
+            //$('#fecha').datepicker("refresh");
+       },
+       beforeShowDay: function (day) {
+         var day = day.getDay();
+         if (/*day == 6 || */day == 0) {
+             return [false, "unaclase"];
+         } else {
+           return [true, "otraclase"];
+         }
+       }
+    });
     funcionBaseUno();
+
+
 });
 
 function funcionBaseUno() {

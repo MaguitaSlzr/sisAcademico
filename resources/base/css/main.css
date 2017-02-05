@@ -183,7 +183,7 @@ table .header {
     z-index: 1;
 }
 
-/* FORMATO BOTON SUBIR FOTO*/
+/* START: FORMATO BOTON SUBIR FOTO*/
 .custom-input-file {
     overflow: hidden;
     position: relative;
@@ -202,3 +202,14 @@ table .header {
     top: -1000px;
     cursor: pointer;
 }
+/* END: FORMATO BOTON SUBIR FOTO*/
+
+/* START: FORMATO CALENDARIO CONTROL ASISTENCIA */
+.dia-seleccionado{
+    background-color: red;
+}
+
+/*
+.ui-datepicker-calendar a.ui-state-default { background: cyan; }
+*/
+/* END:   FORMATO CALENDARIO CONTROL ASISTENCIA */

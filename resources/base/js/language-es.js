@@ -16,6 +16,8 @@ $.datepicker.regional['es'] = {
     yearSuffix: ''
 };
 $.datepicker.setDefaults($.datepicker.regional['es']);
+/*
 $(function () {
     $("#fecha").datepicker();
 });
+*/
