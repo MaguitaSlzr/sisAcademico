@@ -1,21 +1,23 @@
 /* INICIO - CODIGO OBLIGATORIO */
 $(function () {
     $("#fecha").datepicker({
+       /*dateFormat: 'dd/mm/yy',*/ 
        onSelect: function(textoFecha, objDatepicker){
             var sw_fecha=false;
             $(".content-fechas-atrasos li").each(function(){
-               var fecha=$(this).text();
+
+               var fecha=$(this).find('.texto-fecha').text();
+               console.log(fecha);
                if(fecha==textoFecha){
                   sw_fecha=true;
                }
             });
             if(!sw_fecha){
-                var out='<li class="list-group-item">'+textoFecha+'</li>';
+                var out='<li class="list-group-item"><span class="texto-fecha">'+textoFecha+'</span><button type="button" class="close btn-elim-fecha"><span aria-hidden="true">&times;</span></button></li>';
                 $('.content-fechas-atrasos').append(out);
             }else{
                 alert("La fecha ya fue agregada.")
             }
-
             //objDatepicker.dpDiv.find('.ui-datepicker-current-day a').css('background-color', '#ff0000'); 
             //alert(objDatepicker.dpDiv.find('.ui-datepicker-current-day a').text());
             //objDatepicker.dpDiv.find('.ui-datepicker-current-day a').addClass('dia-seleccionado');
@@ -28,11 +30,9 @@ $(function () {
          } else {
            return [true, "otraclase"];
          }
-       }
+       },
     });
     funcionBaseUno();
-
-
 });
 
 function funcionBaseUno() {
@@ -157,26 +157,26 @@ function funcionBaseDos() {
 /* FIN - SELECCIONAR O DESELECCIONAR UN ESTUDIANTE - AUTOR:FELIX */
 $(document).on('click', '.btn-elim-est', function (event) {
     event.preventDefault();
-    //alert('Eliminando estudiante.....'+$(this).parent().find('span').html());
-    var id = $(this).parent().attr('id');
-    //alert('Eliminando estudiante.....'+id);
-    $(this).parent().remove();
-    var color = ($(this).data('color') ? $(this).data('color') : "primary"),
-            style = ($(this).data('style') == "button" ? "btn-" : "list-group-item-");
+    var id = $(this).parent().find('input').val();
+    var color = $(this).data('color') ? $(this).data('color') : "primary";
+    var style = $(this).data('style') == "button" ? "btn-" : "list-group-item-";
     $('#check-list-box li').each(function (idx, li) {
-        if ($(li).attr('id') == id) {
+        if ($(li).val() == id) {
             // $(li).removeClass('active');
             $(li).removeClass(style + color + ' active');
             $(li).find('.state-icon').removeClass('glyphicon-check');
             $(li).find('.state-icon').addClass('glyphicon-unchecked');
         }
     });
-    //$('.est-item').attr.removeClass('active');
-    //alert($('#tabla-asientos tr').length);
-    //var id = $(this).parent().siblings('.tdId').children('input[name=txtId]').val();
+    $(this).parent().remove();
 });
 
 /* FIN - SELECCIONAR O DESELECCIONAR UN ESTUDIANTE - AUTOR:FELIX */
+
+$(document).on('click', '.btn-elim-fecha', function (event) {
+    event.preventDefault();
+    $(this).parent().remove();
+});
 
 $(document).on('change', '#selCurso', function (event) {
     event.preventDefault();

@@ -21,13 +21,13 @@
 							<?php } ?>    
 						</select>
 					</div>
-					<div class="pnlListEstudiantes">                
+					<div class="pnlListEstudiantes" style="border: solid #aaa 1px; overflow: scroll; height: 500px;">                
 						<?php $i = 1; ?>
 						<?php foreach ($cursos[0]['estudiantes'] as $e) { ?>
 						<ul id="check-list-box" class="list-group checked-list-box">
 							<li class="list-group-item est-item" id="<?php echo $i ?>" value="<?php echo $e->est_id ?>"><span class="est-nombre"><?php echo ($i++) . '. ' . $e->est_paterno . ' ' . $e->est_materno . ' ' . $e->est_nombre; ?></span></li>
 						</ul>
-						<?php } ?>       
+						<?php } ?>      
 					</div>
 				</div>
 			</div>
