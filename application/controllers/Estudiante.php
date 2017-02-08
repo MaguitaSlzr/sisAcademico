@@ -527,4 +527,26 @@ class Estudiante extends CI_Controller {
         // echo "Buscando estudiantes del curso: ".$id;
         echo $out;
     }
+
+    public function form_reporte_general(){
+      $this->load->model('curso_mdl');
+      $data = array(
+        'cursos' => $this->curso_mdl->getAllCursos(),
+      );
+      $this->load->view('estudiante/form_reporte_general', $data);
+    }
+
+    public function ajax_all_estudiantes(){
+      $id_curso=$this->input->get('idcurso');
+      $estudiantes = $this->estudiante_mdl->getAllEstudiantesByIdCurso($id_curso);
+      echo json_encode($estudiantes);
+    }
+
+    public function ajax_find_by_id_estudiante(){
+      $id=$this->input->get('idestudiante');
+      //$estudiante = $this->estudiante_mdl->getEstudiante($id);
+      $estudiante = $this->estudiante_mdl->findByIdEstudiante($id);
+      //print_r($estudiante);
+      echo json_encode($estudiante); 
+    }
 }

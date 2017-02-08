@@ -74,6 +74,18 @@ class Estudiante_mdl extends CI_Model {
         }
     }
 
+    function findByIdEstudiante($id){
+        // SELECT e.*, c.cur_descripcion FROM estudiante e, curso c WHERE est_id=50 AND e.curso_id=c.cur_id
+        $this->db->select('e.*, c.*');
+        $this->db->from('estudiante e, curso c');
+        $this->db->where('est_id',$id);
+        $this->db->where('e.curso_id=c.cur_id');
+        $query = $this->db->get();
+        if ($query->num_rows() > 0) {
+            return $query->row();
+        }
+    }
+
     function getEstudiante($id) {
         //$this->db->select('e.est_id, e.est_nombre, e.est_paterno, e.est_materno, e.est_ci, est_ap_nombre, est_ap_parentesco, e.est_direccion, e.est_email, e.est_telefono, e.est_movil, e.est_fechanac, e.est_login, e.est_rude, e.est_fechareg, e.par_expedido_id, pe.uexp_codigo as expedido, e.par_genero_id, pg.ugn_descripcion as genero, e.estado_id, es.descripcion as estado, e.curso_id, c.cur_descripcion as curso');
         $this->db->select('e.est_id, e.est_nombre, e.est_paterno, e.est_materno, e.est_ci, est_ap_nombre, est_ap_parentesco, e.est_direccion, e.est_email, e.est_telefono, e.est_movil, e.est_fotoadj, e.est_fechanac, e.est_login, e.est_rude, e.est_fechareg, e.par_expedido_id, pe.uexp_codigo as expedido, e.par_genero_id, pg.ugn_descripcion as genero, e.estado_id, es.descripcion as estado, e.curso_id');
