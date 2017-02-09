@@ -442,16 +442,22 @@ class Estudiante extends CI_Controller {
     }
 
     public function guardar_registro_asistencia() {
-        $observacion=  $this->input->post('observacion');
-        //$observacion=$_REQUEST['observacion'];
-        $materia=  $this->input->post('materia');
-        echo "observacion: ".$observacion."<br>";
-        echo "materia: ".$materia."<br>";
-        $data = array(
-            'mensaje' => 'Los datos se han registrado correctamente.'
-        );
-        //$this->load->view('estudiante/modal/mod_mensajes.php', $data);
+        $this->autenticacion();
+
+        $falta = strtoupper($this->input->post('falta'));
+        $materia = strtoupper($this->input->post('materia'));
+        $observacion = strtoupper($this->input->post('observacion'));
+        $id_estudiantes[] = $this->input->post('txtIdEst');
+        foreach ($id_estudiantes[0] as $ide) {
+            $fecha1[] = $this->input->post('txtIdfecha');
+            foreach ($fecha1[0] as $fecha) {
+                $fec = date('Y-m-d', strtotime($fecha));
+                $this->estudiante_mdl->addAsistencia($ide, $fec, $falta, $materia, $observacion);
+            }
+        }
+        //$this->load->view('estudiante/modal/mod_mensajes.php', $data);*/
     }
+
 
 //**** FIN CONTROL DE ASISTENCIA ****//
 //**** INICIO CONTROL DISCIPLINARIO ****//

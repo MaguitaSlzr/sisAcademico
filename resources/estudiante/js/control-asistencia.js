@@ -12,8 +12,10 @@ $(function () {
                   sw_fecha=true;
                }
             });
-            if(!sw_fecha){
-                var out='<li class="list-group-item"><span class="texto-fecha">'+textoFecha+'</span><button type="button" class="close btn-elim-fecha"><span aria-hidden="true">&times;</span></button></li>';
+           if(!sw_fecha){
+                var out='<li class="list-group-item"><span class="texto-fecha">'+textoFecha+'</span><button type="button" class="close btn-elim-fecha"><span aria-hidden="true">&times;</span></button>';
+                out += '<input type="hidden" name="txtIdfecha[]" value="'+textoFecha+'"/>';
+                out += '</li>';
                 $('.content-fechas-atrasos').append(out);
             }else{
                 alert("La fecha ya fue agregada.")

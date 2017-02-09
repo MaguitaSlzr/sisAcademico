@@ -1,13 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.14
+-- version 3.5.1
 -- http://www.phpmyadmin.net
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 04-02-2017 a las 05:01:59
--- Versión del servidor: 5.6.17
--- Versión de PHP: 5.5.12
+-- Servidor: localhost
+-- Tiempo de generación: 09-02-2017 a las 16:11:59
+-- Versión del servidor: 5.5.24-log
+-- Versión de PHP: 5.4.3
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -37,7 +37,17 @@ CREATE TABLE IF NOT EXISTS `asistencia` (
   KEY `asi_idfal_idx` (`asi_idfal`),
   KEY `fk_asistencia_materia1_idx` (`materia_idmateria`),
   KEY `asi_idest` (`asi_idest`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+
+--
+-- Volcado de datos para la tabla `asistencia`
+--
+
+INSERT INTO `asistencia` (`asi_id`, `asi_fecha`, `asi_obs`, `asi_idest`, `asi_idfal`, `materia_idmateria`) VALUES
+(3, '2017-02-01', 'NINGUNA', 1, 1, 1),
+(4, '2017-02-02', 'NINGUNA', 1, 1, 1),
+(5, '2017-02-01', 'NINGUNA', 2, 1, 1),
+(6, '2017-02-02', 'NINGUNA', 2, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -627,7 +637,7 @@ CREATE TABLE IF NOT EXISTS `materia` (
   `mat_sigla` varchar(45) NOT NULL,
   `mat_descripcion` varchar(100) NOT NULL,
   PRIMARY KEY (`mat_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
 -- Volcado de datos para la tabla `materia`
@@ -641,7 +651,8 @@ INSERT INTO `materia` (`mat_id`, `mat_gestion`, `mat_sigla`, `mat_descripcion`) 
 (5, '2015', 'LEN', 'LENGUAJE'),
 (6, '2015', 'CIV', 'CIVICA'),
 (7, '2015', 'NAT', 'CIENCIAS NATURALES'),
-(8, '2015', 'BIO', 'BIOLOGIA');
+(8, '2015', 'BIO', 'BIOLOGIA'),
+(9, '2015', 'NA', 'NO APLICA');
 
 -- --------------------------------------------------------
 
@@ -899,7 +910,14 @@ CREATE TABLE IF NOT EXISTS `registro_disciplinario` (
   PRIMARY KEY (`dis_id`),
   KEY `fk_disciplinario_estudiante_idx` (`dis_estudiante`),
   KEY `fk_disciplinario_tipodisciplina_idx` (`dis_iddisciplinario`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=2 ;
+
+--
+-- Volcado de datos para la tabla `registro_disciplinario`
+--
+
+INSERT INTO `registro_disciplinario` (`dis_id`, `dis_fecha`, `dis_iddisciplinario`, `dis_relacionHecho`, `dis_solucion`, `dis_estudiante`) VALUES
+(1, '1970-01-01', 1, NULL, NULL, 1);
 
 -- --------------------------------------------------------
 

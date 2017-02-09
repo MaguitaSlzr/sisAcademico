@@ -138,6 +138,16 @@ class Estudiante_mdl extends CI_Model {
             )
         );
     }
+    function addAsistencia($ide, $fecha, $falta, $materia, $observacion){
+         $this->db->insert('asistencia', array(
+            'asi_idest' => $ide,
+            'asi_fecha' => $fecha,
+            'asi_idfal' =>$falta,
+            'materia_idmateria' => $materia,
+            'asi_obs' => $observacion
+            )
+        );
+    }
 
     function saveNombreFotoEstudiante($id,$nombre_archivo){
         $this->db->where('est_id', $id);
@@ -259,6 +269,7 @@ class Estudiante_mdl extends CI_Model {
             'curso_id'=> $id_curso
         ));
     }
+    
     // FIN ASIGNACION DE CURSO //
 
     function getAllTipoFaltas(){
