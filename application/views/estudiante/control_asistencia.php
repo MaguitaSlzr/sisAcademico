@@ -101,32 +101,12 @@
 							<textarea id="observacion" name="observacion" rows="12" class="form-control"></textarea>
 						</div>
 						<button class="btn btn-primary" data-toggle="modal" data-target="#modalMensaje">Registrar</button>
-						<button class="btn btn-default">Cancelar</button>
+						<a href="<?php echo base_url() ?>estudiante/form_control_asistencia" class="btn btn-default">Cancelar</a>
 					</div>
 				</div>
 			</div>
 		</form>
 	</div>
 </div>
-
-<!-- Ventana modal basica -->
-<!--
-<div class="modal fade" id="modalMensaje">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button class="close" aria-hiden="true" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Mensaje</h4>
-            </div>
-            <div class="modal-body">
-                Los datos se han registrado correctamente.
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-primary" data-dismiss="modal">OK</button>
-            </div>
-        </div>
-    </div>
-</div>
--->
 <?php $this->load->view('template/footer'); ?>
 <script src="<?php echo base_url();?>resources/estudiante/js/control-asistencia.js"></script>

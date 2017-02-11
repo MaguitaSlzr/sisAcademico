@@ -455,7 +455,7 @@ class Estudiante extends CI_Controller {
                 $this->estudiante_mdl->addAsistencia($ide, $fec, $falta, $materia, $observacion);
             }
         }
-        //$this->load->view('estudiante/modal/mod_mensajes.php', $data);*/
+        $this->form_control_asistencia();
     }
 
 

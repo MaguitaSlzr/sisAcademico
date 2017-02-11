@@ -76,6 +76,20 @@ class Estudiante_mdl extends CI_Model {
 
     function findByIdEstudiante($id){
         // SELECT e.*, c.cur_descripcion FROM estudiante e, curso c WHERE est_id=50 AND e.curso_id=c.cur_id
+        /*
+        ****** CUENTA FALTAS
+        SELECT COUNT(a.asi_fecha)
+        FROM estudiante e, asistencia a 
+        WHERE e.est_id=57 AND e.est_id=a.asi_idest AND a.asi_idfal=1
+        */
+        /*
+        ****** CONSULTA FINAL: Muestra datos de estudiante y nro de faltas
+        SELECT e.*, c.cur_descripcion, (SELECT COUNT(a.asi_fecha) 
+                                        FROM asistencia a 
+                                        WHERE e.est_id=57 AND e.est_id=a.asi_idest AND a.asi_idfal=1) AS FALTAS
+        FROM estudiante e, curso c 
+        WHERE est_id=57 AND e.curso_id=c.cur_id
+        */
         $this->db->select('e.*, c.*');
         $this->db->from('estudiante e, curso c');
         $this->db->where('est_id',$id);
