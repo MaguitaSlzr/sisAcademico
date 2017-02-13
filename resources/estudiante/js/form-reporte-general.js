@@ -10,7 +10,7 @@ $(document).ready(function(){
 	  success: function(data){
 	  	var out='<option value="0">--- Seleccionar un estudiante ---</option>';
 	  	for(var i=0;i<data.length;i++){
- 	      out+='<option value="'+data[i].est_id+'">'+(i+1)+'. '+data[i].est_paterno+' '+data[i].est_materno+' '+data[i].est_nombre+'</option>';
+ 	      out+='<option value="'+data[i].est_id+'">'+data[i].est_paterno+' '+data[i].est_materno+' '+data[i].est_nombre+'</option>';
 	  	}
 	  	$('#estudiante').html(out);
 	  	$('#estudiante').removeAttr('disabled');

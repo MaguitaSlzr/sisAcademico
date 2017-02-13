@@ -34,7 +34,21 @@
 	    </div>
 	  </div>
 	</div>
+	
 	<div class="col-md-6">
+  	  <div class="panel panel-primary">
+  	  	<div class="panel-heading">
+		  <h3 class="panel-title">
+			Fotografia
+		  </h3>
+		</div>
+	    <div class="panel-body">
+		  Fotografia....		  
+	    </div>
+	  </div>
+	</div>
+
+	<div class="col-md-12" style="clear: both;">
 	  <div class="panel panel-primary">
 		<div class="panel-heading">
 		  <h3 class="panel-title">
@@ -42,21 +56,32 @@
 		  </h3>
 		</div>
 		<div class="panel-body">
-		  <table class="table">
-		  	<tr>
-		  		<th>Curso: </th>
-		  		<td id="prev-curso"></td>
-		  	</tr>
-		  	<tr>
-		  		<th>Paralelo: </th>
-		  		<td id="prev-paralelo"></td>
-		  	</tr>
-		  	<tr>
-		  		<th>Nombre completo: </th>
-		  		<td id="prev-nombre"></td>
-		  	</tr>
-		  </table>
-		  
+		<!--
+		  <div class="row">
+		  	<div class="col-sm-6">
+			  <table class="table">
+			  	<tr>
+			  		<th>Curso: </th>
+			  		<td id="prev-curso"></td>
+			  	</tr>
+			  	<tr>
+			  		<th>Paralelo: </th>
+			  		<td id="prev-paralelo"></td>
+			  	</tr>
+			  	<tr>
+			  		<th>Nombre completo: </th>
+			  		<td id="prev-nombre"></td>
+			  	</tr>
+			  </table>
+			</div>
+			<div class="col-sm-6">
+				foto
+			</div>
+		  </div>
+		-->
+		  <div class="row">
+		  <!-- begin: asistencia -->
+		  <div class="col-sm-6">
 		  <div class="panel panel-success">
 		    <div class="panel-heading">
 		      <h3 class="panel-title">Asistencia</h3>
@@ -86,15 +111,21 @@
 		        </table>
 		    </div>
 		  </div>
+		  </div>
+		  <!-- end: asistencia -->
 
+		  <!-- begin: disciplinario -->
+		  <div class="col-sm-6">
 		   <div class="panel panel-success">
 		    <div class="panel-heading">
-		      <h3 class="panel-title">
-		  		<th>Disciplinario:</h3>
+		      <h3 class="panel-title">Disciplinario:</h3>
 		    </div>
 		    <div class="panel-body">
-		        
+		        contenido...
 		    </div>
+		    </div>
+		  </div>
+		  <!-- end: disciplinario -->
 		  </div>
 
 		  <div class="form-group">
