@@ -27,6 +27,7 @@
                 </div>
             </div>
         </div>
+
         <div class="col-md-7">
             <div class="panel panel-primary">
                 <div class="panel-heading">
@@ -40,8 +41,9 @@
                             <!-- ESTUDIANTES SELECCIONADOS -->
                         </ul>
                     </div>
-                </div>
-                <div class="panel panel-primary">                
+                </div>      
+            </div>
+            <div class="panel panel-primary">                
                     <div class="panel-heading">
                         <h3 class="panel-title">
                             REGISTRO DE CASO
@@ -88,16 +90,19 @@
                         </div>
                         <!--<button class="btn btn-success">Generar Citación</button>-->
                         <!--<button class="btn btn-success">Generar Carta de Compromiso</button>-->
-
-                        <button class="btn btn-primary col-xs-12" id="get-checked-data">Enviar Datos</button>
-                        <button id="btnGuardarEstudiante" class="btn btn-primary" onclick="guardarDisciplinario()"><span class="glyphicon glyphicon-floppy-disk"></span> Guardar y Salir</button>
-                        <button class="btn btn-default">Cancelar</button>
+                        
+                        <div class="form-group" style="float: right;">
+                            <button class="btn btn-primary" id="get-checked-data">Enviar Datos</button>
+                            <button id="btnGuardarEstudiante" class="btn btn-primary" onclick="guardarDisciplinario()"><span class="glyphicon glyphicon-floppy-disk"></span> Guardar y Salir</button>
+                            <button class="btn btn-default">Cancelar</button>
+                        </div>
                     </div>
-
+                    <!--
                     <pre id="display-json"></pre>
-                </div>            
-            </div>
+                    -->
+                </div>   
         </div>
+    </div>
 </form>
 <script src="<?php echo base_url(); ?>resources/base/js/jquery-ui.min.js"></script>
 <script src="<?php echo base_url(); ?>resources/estudiante/js/control_disciplinario.js"></script>

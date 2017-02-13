@@ -3,7 +3,8 @@
 <h3 class="tituloPrincipal">Generar Reporte Estudiante</h3>
 <form action="#" method="post">
   <div class="row">
-  	<div class="col-md-6">
+  	<!-- begin controles de busqueda -->
+  	<div class="col-md-8">
   	  <div class="panel panel-primary">
   	  	<div class="panel-heading">
 		  <h3 class="panel-title">
@@ -11,7 +12,6 @@
 		  </h3>
 		</div>
 	    <div class="panel-body">
-	      
 	      <div class="form-group">
 		    <label for="curso">Seleccionar curso</label>
 		    <input type="hidden" id="url_get_estudiantes" value="<?php echo base_url('estudiante/ajax_all_estudiantes'); ?>">
@@ -22,7 +22,6 @@
 			  <?php } ?>
 			</select>
 		  </div>
-		  
 		  <div class="form-group">
 		    <label for="estudiante">Seleccionar estudiante</label>
 		    <input type="hidden" id="url_find_estudiante" value="<?php echo base_url('estudiante/ajax_find_by_id_estudiante'); ?>">
@@ -34,8 +33,10 @@
 	    </div>
 	  </div>
 	</div>
-	
-	<div class="col-md-6">
+	<!-- end controles de busqueda -->
+
+	<!-- begin fotografia -->
+	<div class="col-md-4">
   	  <div class="panel panel-primary">
   	  	<div class="panel-heading">
 		  <h3 class="panel-title">
@@ -43,10 +44,12 @@
 		  </h3>
 		</div>
 	    <div class="panel-body">
-		  Fotografia....		  
+	      <input type="hidden" id="base-url-foto" value="<?php echo base_url() ?>uploads/">
+		  <img id="fotografia" src="<?php echo base_url();?>resources/base/img/avatar_estudiante.png" class="thumb img-responsive" alt="Fotografia" style="margin: 0 auto;" />		  
 	    </div>
 	  </div>
 	</div>
+	<!-- end fotografia -->
 
 	<div class="col-md-12" style="clear: both;">
 	  <div class="panel panel-primary">
@@ -87,26 +90,31 @@
 		      <h3 class="panel-title">Asistencia</h3>
 		    </div>
 		    <div class="panel-body">
-		        <table class="table">
+		        <table id="table-asistencia" class="table">
 		        	<tr>
 				  		<th>Total atrasos: </th>
 				  		<td><span id="prev-atrasos" class="badge" ></span></td>
+				  		<td><a href="#" class="btn btn-default btn-xs disabled">Detalle</a></td>
 				  	</tr>
 				  	<tr>
 				  		<th>Total fugas: </th>
 				  		<td><span id="prev-fugas" class="badge"></span></td>
+				  		<td><a href="#" class="btn btn-default btn-xs disabled">Detalle</a></td>
 				  	</tr>
 				  	<tr>
 				  		<th>Total faltas injustificadas: </th>
 				  		<td><span id="prev-faltas-injustificadas" class="badge"></span></td>
+				  		<td><a href="#" class="btn btn-default btn-xs disabled">Detalle</a></td>
 				  	</tr>
 				  	<tr>
 				  		<th>Total faltas justificadas: </th>
 				  		<td><span id="prev-faltas-justificadas" class="badge"></span></td>
+				  		<td><a href="#" class="btn btn-default btn-xs disabled">Detalle</a></td>
 				  	</tr>
 				  	<tr>
 				  		<th>Total Permisos: </th>
 				  		<td><span id="prev-permisos" class="badge"></span></td>
+				  		<td><a href="#" class="btn btn-default btn-xs disabled">Detalle</a></td>
 				  	</tr>
 		        </table>
 		    </div>
@@ -118,7 +126,7 @@
 		  <div class="col-sm-6">
 		   <div class="panel panel-success">
 		    <div class="panel-heading">
-		      <h3 class="panel-title">Disciplinario:</h3>
+		      <h3 class="panel-title">Disciplinario</h3>
 		    </div>
 		    <div class="panel-body">
 		        contenido...
