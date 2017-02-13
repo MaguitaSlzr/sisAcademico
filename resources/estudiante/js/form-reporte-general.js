@@ -27,9 +27,15 @@ $(document).ready(function(){
 	  url: url,
 	  data: {"idestudiante":$(this).val()},
 	  success: function(data){
-	  	$('#prev_curso').text(data.cur_descripcion);
-	  	$('#prev_paralelo').text(data.cur_paralelo);
-	  	$('#prev_nombre').text(data.est_paterno+' '+data.est_materno+' '+data.est_nombre);
+	  	//console.log(data);
+	  	$('#prev-curso').text(data.estudiante.cur_descripcion);
+	  	$('#prev-paralelo').text(data.estudiante.cur_paralelo);
+	  	$('#prev-nombre').text(data.estudiante.est_paterno+' '+data.estudiante.est_materno+' '+data.estudiante.est_nombre);
+	  	$('#prev-atrasos').text(data.atrasos);
+	  	$('#prev-fugas').text(data.fugas);
+	  	$('#prev-faltas-injustificadas').text(data.faltas_injustificadas);
+	  	$('#prev-faltas-justificadas').text(data.faltas_justificadas);
+	  	$('#prev-permisos').text(data.permisos);	  
 	  },
 	});
 	return false;

@@ -344,4 +344,14 @@ class Estudiante_mdl extends CI_Model {
             return $query->result();
         }
     }
+
+    function getNroFaltasByIdEstudiante($id, $id_falta){
+        $this->db->select('COUNT(asi_id) as nro');
+        $this->db->where('asi_idest',$id); 
+        $this->db->where('asi_idfal',$id_falta); 
+        $query=$this->db->get('asistencia');
+        if($query->num_rows()>0){
+            return $query->row();
+        }
+    }
 }

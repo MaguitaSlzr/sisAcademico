@@ -550,9 +550,14 @@ class Estudiante extends CI_Controller {
 
     public function ajax_find_by_id_estudiante(){
       $id=$this->input->get('idestudiante');
-      //$estudiante = $this->estudiante_mdl->getEstudiante($id);
-      $estudiante = $this->estudiante_mdl->findByIdEstudiante($id);
-      //print_r($estudiante);
-      echo json_encode($estudiante); 
+      $data=array(
+        'estudiante'=>$this->estudiante_mdl->findByIdEstudiante($id),
+        'atrasos'=>$this->estudiante_mdl->getNroFaltasByIdEstudiante($id,1)->nro,
+        'fugas'=>$this->estudiante_mdl->getNroFaltasByIdEstudiante($id,2)->nro,
+        'faltas_injustificadas'=>$this->estudiante_mdl->getNroFaltasByIdEstudiante($id,3)->nro,
+        'faltas_justificadas'=>$this->estudiante_mdl->getNroFaltasByIdEstudiante($id,4)->nro,
+        'permisos'=>$this->estudiante_mdl->getNroFaltasByIdEstudiante($id,5)->nro,
+      );
+      echo json_encode($data); 
     }
 }

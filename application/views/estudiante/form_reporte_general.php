@@ -45,25 +45,57 @@
 		  <table class="table">
 		  	<tr>
 		  		<th>Curso: </th>
-		  		<td id="prev_curso"></td>
+		  		<td id="prev-curso"></td>
 		  	</tr>
 		  	<tr>
 		  		<th>Paralelo: </th>
-		  		<td id="prev_paralelo"></td>
+		  		<td id="prev-paralelo"></td>
 		  	</tr>
 		  	<tr>
-		  		<th>Nombre Completo: </th>
-		  		<td id="prev_nombre"></td>
-		  	</tr>
-		  	<tr>
-		  		<th>Total Faltas: </th>
-		  		<td id="prev_total"></td>
-		  	</tr>
-		  	<tr>
-		  		<th>Disciplinario: </th>
-		  		<td id="prev_disciplinario"></td>
+		  		<th>Nombre completo: </th>
+		  		<td id="prev-nombre"></td>
 		  	</tr>
 		  </table>
+		  
+		  <div class="panel panel-success">
+		    <div class="panel-heading">
+		      <h3 class="panel-title">Asistencia</h3>
+		    </div>
+		    <div class="panel-body">
+		        <table class="table">
+		        	<tr>
+				  		<th>Total atrasos: </th>
+				  		<td><span id="prev-atrasos" class="badge" ></span></td>
+				  	</tr>
+				  	<tr>
+				  		<th>Total fugas: </th>
+				  		<td><span id="prev-fugas" class="badge"></span></td>
+				  	</tr>
+				  	<tr>
+				  		<th>Total faltas injustificadas: </th>
+				  		<td><span id="prev-faltas-injustificadas" class="badge"></span></td>
+				  	</tr>
+				  	<tr>
+				  		<th>Total faltas justificadas: </th>
+				  		<td><span id="prev-faltas-justificadas" class="badge"></span></td>
+				  	</tr>
+				  	<tr>
+				  		<th>Total Permisos: </th>
+				  		<td><span id="prev-permisos" class="badge"></span></td>
+				  	</tr>
+		        </table>
+		    </div>
+		  </div>
+
+		   <div class="panel panel-success">
+		    <div class="panel-heading">
+		      <h3 class="panel-title">
+		  		<th>Disciplinario:</h3>
+		    </div>
+		    <div class="panel-body">
+		        
+		    </div>
+		  </div>
 
 		  <div class="form-group">
 		    <button type="button" class="btn btn-primary" style="float: right;">Generar Reporte</button>
