@@ -9,46 +9,51 @@ class Estudiante_mdl extends CI_Model {
         $this->load->database();
     }
 
-    /************************************************
+    /*     * **********************************************
      * A PARTIR DE AQUI AGREGAR SUS PROPIOS METODOS *
-     ************************************************/
+     * ********************************************** */
+
     // INICIO CRUD ESTUDIANTES
-    function num_estudiantes(){
+    function num_estudiantes() {
         //$this->db->where('rol_id',4);
         $this->db->where('estado_id!=3');
         $query = $this->db->get('estudiante');
         return $query->num_rows();
     }
-    
-    function num_disciplina(){
-         $query = $this->db->get('registro_disciplinario');
+
+    function num_disciplina() {
+        $query = $this->db->get('registro_disciplinario');
         return $query->num_rows();
     }
-    function get_disciplina($per_page){
+
+    function get_disciplina($per_page) {
         //$this->db->where('rol_id',4);
         $this->db->order_by("dis_id", "asc");
-        $query=$this->db->get('registro_disciplinario',$per_page,$this->uri->segment(3));
+        $query = $this->db->get('registro_disciplinario', $per_page, $this->uri->segment(3));
         return $query->result();
     }
-    function get_disciplinas($per_page){
+
+    function get_disciplinas($per_page) {
         //$this->db->where('rol_id',4);
         $this->db->order_by("dis_id", "asc");
-        $query=$this->db->get('registro_disciplinario',$per_page,$this->uri->segment(3));
+        $query = $this->db->get('registro_disciplinario', $per_page, $this->uri->segment(3));
         return $query->result();
     }
-    
-    function get_par_disciplinario($id){
-        $this->db->where('ptd_id',$id);
-        $query=$this->db->get('par_tipo_disciplinario');
+
+    function get_par_disciplinario($id) {
+        $this->db->where('ptd_id', $id);
+        $query = $this->db->get('par_tipo_disciplinario');
         return $query->result();
-    } 
-    function get_estudiantes($per_page){
+    }
+
+    function get_estudiantes($per_page) {
         //$this->db->where('rol_id',4);
         $this->db->where('estado_id!=3');
         $this->db->order_by("est_paterno", "asc");
-        $query=$this->db->get('estudiante',$per_page,$this->uri->segment(3));
+        $query = $this->db->get('estudiante', $per_page, $this->uri->segment(3));
         return $query->result();
     }
+
     function getAllEstudiantes() {
         $this->db->select('*');
         $this->db->from('estudiante');
@@ -58,14 +63,14 @@ class Estudiante_mdl extends CI_Model {
         }
     }
 
-    function getAllExpedidos(){
+    function getAllExpedidos() {
         $query = $this->db->get('par_expedido');
         if ($query->num_rows() > 0) {
             return $query->result();
         }
     }
 
-    function getAllCursos(){
+    function getAllCursos() {
         $this->db->order_by("cur_grado", "asc");
         $this->db->order_by("cur_paralelo", "asc");
         $query = $this->db->get('curso');
@@ -74,25 +79,25 @@ class Estudiante_mdl extends CI_Model {
         }
     }
 
-    function findByIdEstudiante($id){
+    function findByIdEstudiante($id) {
         // SELECT e.*, c.cur_descripcion FROM estudiante e, curso c WHERE est_id=50 AND e.curso_id=c.cur_id
         /*
-        ****** CUENTA FALTAS
-        SELECT COUNT(a.asi_fecha)
-        FROM estudiante e, asistencia a 
-        WHERE e.est_id=57 AND e.est_id=a.asi_idest AND a.asi_idfal=1
-        */
+         * ***** CUENTA FALTAS
+          SELECT COUNT(a.asi_fecha)
+          FROM estudiante e, asistencia a
+          WHERE e.est_id=57 AND e.est_id=a.asi_idest AND a.asi_idfal=1
+         */
         /*
-        ****** CONSULTA FINAL: Muestra datos de estudiante y nro de faltas
-        SELECT e.*, c.cur_descripcion, (SELECT COUNT(a.asi_fecha) 
-                                        FROM asistencia a 
-                                        WHERE e.est_id=57 AND e.est_id=a.asi_idest AND a.asi_idfal=1) AS FALTAS
-        FROM estudiante e, curso c 
-        WHERE est_id=57 AND e.curso_id=c.cur_id
-        */
+         * ***** CONSULTA FINAL: Muestra datos de estudiante y nro de faltas
+          SELECT e.*, c.cur_descripcion, (SELECT COUNT(a.asi_fecha)
+          FROM asistencia a
+          WHERE e.est_id=57 AND e.est_id=a.asi_idest AND a.asi_idfal=1) AS FALTAS
+          FROM estudiante e, curso c
+          WHERE est_id=57 AND e.curso_id=c.cur_id
+         */
         $this->db->select('e.*, c.*');
         $this->db->from('estudiante e, curso c');
-        $this->db->where('est_id',$id);
+        $this->db->where('est_id', $id);
         $this->db->where('e.curso_id=c.cur_id');
         $query = $this->db->get();
         if ($query->num_rows() > 0) {
@@ -105,7 +110,7 @@ class Estudiante_mdl extends CI_Model {
         $this->db->select('e.est_id, e.est_nombre, e.est_paterno, e.est_materno, e.est_ci, est_ap_nombre, est_ap_parentesco, e.est_direccion, e.est_email, e.est_telefono, e.est_movil, e.est_fotoadj, e.est_fechanac, e.est_login, e.est_rude, e.est_fechareg, e.par_expedido_id, pe.uexp_codigo as expedido, e.par_genero_id, pg.ugn_descripcion as genero, e.estado_id, es.descripcion as estado, e.curso_id');
         //$this->db->from('estudiante e, par_expedido pe, par_genero pg, estado es, curso c');
         $this->db->from('estudiante e, par_expedido pe, par_genero pg, estado es');
-        $this->db->where('e.est_id',$id);
+        $this->db->where('e.est_id', $id);
         $this->db->where('pe.uexp_id=e.par_expedido_id');
         $this->db->where('pg.ugn_id=e.par_genero_id');
         $this->db->where('es.est_id=e.estado_id');
@@ -116,11 +121,11 @@ class Estudiante_mdl extends CI_Model {
         }
     }
 
-    function addEstudiante($rude,$ci,$nombre,$paterno,$materno,$direccion,$email,$telefono,$celular,$fechaNac,$genero,$usuario,$password,$fechaReg,$exp,$curso,$nombreApoderado,$parentesco){
+    function addEstudiante($rude, $ci, $nombre, $paterno, $materno, $direccion, $email, $telefono, $celular, $fechaNac, $genero, $usuario, $password, $fechaReg, $exp, $curso, $nombreApoderado, $parentesco) {
         $this->db->insert('estudiante', array(
             'est_rude' => $rude,
             'est_nombre' => $nombre,
-            'est_paterno' =>$paterno,
+            'est_paterno' => $paterno,
             'est_materno' => $materno,
             'est_ci' => $ci,
             'est_ap_nombre' => $nombreApoderado,
@@ -138,182 +143,183 @@ class Estudiante_mdl extends CI_Model {
             'rol_id' => 3,
             'estado_id' => 1,
             'curso_id' => $curso,
-            )
+                )
         );
     }
-    
-    function addDisciplinario($estudiante, $fecha, $falta, $relacion, $solucion){
-         $this->db->insert('registro_disciplinario', array(
+
+    function addDisciplinario($estudiante, $fecha, $falta, $relacion, $solucion) {
+        $this->db->insert('registro_disciplinario', array(
             'dis_estudiante' => $estudiante,
             'dis_fecha' => $fecha,
-            'dis_iddisciplinario' =>$falta,
+            'dis_iddisciplinario' => $falta,
             'dis_relacionHecho' => $relacion,
             'dis_solucion' => $solucion
-            )
+                )
         );
     }
-    function addAsistencia($ide, $fecha, $falta, $materia, $observacion){
-         $this->db->insert('asistencia', array(
+
+    function addAsistencia($ide, $fecha, $falta, $materia, $observacion) {
+        $this->db->insert('asistencia', array(
             'asi_idest' => $ide,
             'asi_fecha' => $fecha,
-            'asi_idfal' =>$falta,
+            'asi_idfal' => $falta,
             'materia_idmateria' => $materia,
             'asi_obs' => $observacion
-            )
+                )
         );
     }
 
-    function saveNombreFotoEstudiante($id,$nombre_archivo){
+    function saveNombreFotoEstudiante($id, $nombre_archivo) {
         $this->db->where('est_id', $id);
-        $this->db->update('estudiante',array(
-            'est_fotoadj'=> $nombre_archivo,
+        $this->db->update('estudiante', array(
+            'est_fotoadj' => $nombre_archivo,
         ));
     }
 
-    function deleteEstudiante($id){
+    function deleteEstudiante($id) {
         $this->db->where('est_id', $id);
-        $this->db->update('estudiante',array(
-            'estado_id'=> 3
+        $this->db->update('estudiante', array(
+            'estado_id' => 3
         ));
     }
 
-    function updateEstudiante($id,$rude,$ci,$exp,$nombre,$paterno,$materno,$nombreApoderado,$parentesco,$direccion,$email,$telefono,$celular,$fechaNac,$genero,$estado,$curso,$usuario,$password){
+    function updateEstudiante($id, $rude, $ci, $exp, $nombre, $paterno, $materno, $nombreApoderado, $parentesco, $direccion, $email, $telefono, $celular, $fechaNac, $genero, $estado, $curso, $usuario, $password) {
         $this->db->where('est_id', $id);
-        $this->db->update('estudiante',array(
-            'est_rude'=> $rude,
-            'est_ci'=> $ci,
+        $this->db->update('estudiante', array(
+            'est_rude' => $rude,
+            'est_ci' => $ci,
             'par_expedido_id' => $exp,
-            'est_nombre'=> $nombre,
-            'est_paterno'=> $paterno,
-            'est_materno'=> $materno,
-            'est_ap_nombre'=> $nombreApoderado,
-            'est_ap_parentesco'=> $parentesco,
-            'est_direccion'=> $direccion,
-            'est_email'=> $email,
-            'est_telefono'=> $telefono,
-            'est_movil'=> $celular,
-            'est_fechanac'=> $fechaNac,
+            'est_nombre' => $nombre,
+            'est_paterno' => $paterno,
+            'est_materno' => $materno,
+            'est_ap_nombre' => $nombreApoderado,
+            'est_ap_parentesco' => $parentesco,
+            'est_direccion' => $direccion,
+            'est_email' => $email,
+            'est_telefono' => $telefono,
+            'est_movil' => $celular,
+            'est_fechanac' => $fechaNac,
             'par_genero_id' => $genero,
             'estado_id' => $estado,
-            'curso_id'=> $curso,
-            'est_login'=> $usuario,
-            'est_password'=> $password
+            'curso_id' => $curso,
+            'est_login' => $usuario,
+            'est_password' => $password
         ));
     }
 
-    function getEstudiantesGeneral($dato){
-        $query=$this->db->select('*')->from('estudiante')
-            ->like('est_ci', $dato)
-            ->where('estado_id !=',3)
-            ->or_like('est_rude', $dato)
-            ->where('estado_id !=',3)
-            ->or_like('est_paterno', $dato)
-            ->where('estado_id !=',3)
-            ->or_like('est_materno', $dato)
-            ->where('estado_id !=',3)
-            ->or_like('est_nombre', $dato)
-            ->where('estado_id !=',3)
-            ->limit(10)
-            ->get();
+    function getEstudiantesGeneral($dato) {
+        $query = $this->db->select('*')->from('estudiante')
+                ->like('est_ci', $dato)
+                ->where('estado_id !=', 3)
+                ->or_like('est_rude', $dato)
+                ->where('estado_id !=', 3)
+                ->or_like('est_paterno', $dato)
+                ->where('estado_id !=', 3)
+                ->or_like('est_materno', $dato)
+                ->where('estado_id !=', 3)
+                ->or_like('est_nombre', $dato)
+                ->where('estado_id !=', 3)
+                ->limit(10)
+                ->get();
         return $query->result();
     }
 
-    function getUltimoIdEstudiante(){
+    function getUltimoIdEstudiante() {
         /*
-        $this->db->select_max('est_id');
-        $query = $this->db->get('estudiante');
-        return $query->row()->est_id;
-        */
+          $this->db->select_max('est_id');
+          $query = $this->db->get('estudiante');
+          return $query->row()->est_id;
+         */
         return $this->db->insert_id();
     }
 
-    function getNombreFotoArchivo($id){
-        $this->db->where('est_id',$id);
+    function getNombreFotoArchivo($id) {
+        $this->db->where('est_id', $id);
         $query = $this->db->get('estudiante');
         if ($query->num_rows() > 0) {
             return $query->row()->est_fotoadj;
         }
     }
-    // FIN CRUD ESTUDIANTES
 
+    // FIN CRUD ESTUDIANTES
     // INICIO ASIGNACION DE CURSO //
-    function getAllEstNoAsignados(){
-        $this->db->where('estado_id',1);
-        $this->db->where('curso_id',NULL);
+    function getAllEstNoAsignados() {
+        $this->db->where('estado_id', 1);
+        $this->db->where('curso_id', NULL);
         $this->db->order_by("est_paterno", "asc");
-        $query=$this->db->get('estudiante');
+        $query = $this->db->get('estudiante');
         return $query->result();
     }
 
-    function getAllEstudiantesAsignados($id_curso){
-        $this->db->where('estado_id',1);
-        $this->db->where('curso_id',$id_curso);
+    function getAllEstudiantesAsignados($id_curso) {
+        $this->db->where('estado_id', 1);
+        $this->db->where('curso_id', $id_curso);
         $this->db->order_by("curso_id", "asc");
         $this->db->order_by("est_paterno", "asc");
-        $query=$this->db->get('estudiante');
-        return $query->result();   
+        $query = $this->db->get('estudiante');
+        return $query->result();
     }
 
-    function countEstudiantesVaronesByIdCurso($id){
-        $this->db->where('estado_id',1);
-        $this->db->where('curso_id',$id);
+    function countEstudiantesVaronesByIdCurso($id) {
+        $this->db->where('estado_id', 1);
+        $this->db->where('curso_id', $id);
         $this->db->where('par_genero_id', 2);
-        $query=$this->db->count_all_results('estudiante');
+        $query = $this->db->count_all_results('estudiante');
         return $query;
     }
 
-    function countEstudiantesMujeresByIdCurso($id){
-        $this->db->where('estado_id',1);
-        $this->db->where('curso_id',$id);
+    function countEstudiantesMujeresByIdCurso($id) {
+        $this->db->where('estado_id', 1);
+        $this->db->where('curso_id', $id);
         $this->db->where('par_genero_id', 1);
-        $query=$this->db->count_all_results('estudiante');
+        $query = $this->db->count_all_results('estudiante');
         return $query;
     }
 
-    function desagregarDeCursoByIdEstudiante($id){
+    function desagregarDeCursoByIdEstudiante($id) {
         $this->db->where('est_id', $id);
-        $this->db->update('estudiante',array(
-            'curso_id'=> NULL
+        $this->db->update('estudiante', array(
+            'curso_id' => NULL
         ));
     }
 
-    function cambioCursoByIdEstudiante($id_estudiante,$id_curso){
+    function cambioCursoByIdEstudiante($id_estudiante, $id_curso) {
         $this->db->where('est_id', $id_estudiante);
-        $this->db->update('estudiante',array(
-            'curso_id'=> $id_curso
+        $this->db->update('estudiante', array(
+            'curso_id' => $id_curso
         ));
     }
-    
+
     // FIN ASIGNACION DE CURSO //
 
-    function getAllTipoFaltas(){
+    function getAllTipoFaltas() {
         $this->db->select('*');
         $this->db->from('par_tipo_falta');
-        $query=$this->db->get();
-        if($query->num_rows()>0){
+        $query = $this->db->get();
+        if ($query->num_rows() > 0) {
             return $query->result();
         }
     }
 
-    function getAllDocentes(){
+    function getAllDocentes() {
         $this->db->select('*');
         $this->db->from('profesor');
-        $this->db->where('rol_id',4);
-        $this->db->where('estado_id',1);
+        $this->db->where('rol_id', 4);
+        $this->db->where('estado_id', 1);
         $this->db->order_by("pro_paterno", "asc");
-        $query=$this->db->get();
-        if($query->num_rows()>0){
+        $query = $this->db->get();
+        if ($query->num_rows() > 0) {
             return $query->result();
-        }   
+        }
     }
 
-    function getAllMaterias(){
+    function getAllMaterias() {
         $this->db->select('*');
         $this->db->from('materia');
-        $query=$this->db->get();
-        if($query->num_rows()>0){
+        $query = $this->db->get();
+        if ($query->num_rows() > 0) {
             return $query->result();
-        }   
+        }
     }
 
     function getAllTipoDisciplinario() {
@@ -325,33 +331,44 @@ class Estudiante_mdl extends CI_Model {
         }
     }
 
-    function getAllEstudiantesDisciplinario(){
+    function getAllEstudiantesDisciplinario() {
         $this->db->select('e.est_ci, e.est_rude, e.est_nombre, e.est_paterno, e.est_materno, rd.dis_id, rd.dis_fecha, rd.dis_relacionHecho, rd.dis_solucion');
         $this->db->from('estudiante e, registro_disciplinario rd');
         $this->db->where('e.est_id = rd.dis_estudiante');
         $query = $this->db->get();
         if ($query->num_rows() > 0) {
             return $query->result();
-        } 
+        }
     }
-    
-    function getAllEstudiantesByIdCurso($id){
+
+    function getAllEstudiantesByIdCurso($id) {
         $this->db->select('*');
         $this->db->from('estudiante');
-        $this->db->where('curso_id',$id);
-        $query=$this->db->get();
-        if($query->num_rows()>0){
+        $this->db->where('curso_id', $id);
+        $query = $this->db->get();
+        if ($query->num_rows() > 0) {
             return $query->result();
         }
     }
 
-    function getNroFaltasByIdEstudiante($id, $id_falta){
+    function getNroFaltasByIdEstudiante($id, $id_falta) {
         $this->db->select('COUNT(asi_id) as nro');
-        $this->db->where('asi_idest',$id); 
-        $this->db->where('asi_idfal',$id_falta); 
-        $query=$this->db->get('asistencia');
-        if($query->num_rows()>0){
+        $this->db->where('asi_idest', $id);
+        $this->db->where('asi_idfal', $id_falta);
+        $query = $this->db->get('asistencia');
+        if ($query->num_rows() > 0) {
             return $query->row();
         }
     }
+
+    function getDisciplinarios($id_estudiante) {
+        $this->db->from('registro_disciplinario rd, par_tipo_disciplinario ptd');
+        $this->db->where('rd.dis_estudiante' , $id_estudiante);
+        $this->db->where('rd.dis_iddisciplinario=ptd.ptd_id');
+        $query = $this->db->get();
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        }
+    }
+
 }

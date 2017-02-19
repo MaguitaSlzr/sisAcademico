@@ -44,7 +44,7 @@
                                 -->
                                 <li><a href="<?php echo site_url('estudiante/registro_estudiantes'); ?>">Registro de Estudiantes</a></li>  
                                 <li><a href="<?php echo site_url('estudiante/asignar_curso'); ?>">Asignación Estudiante Curso</a></li>
-                                <li><a href="#">Registro Academico</a></li>
+                                <!--<li><a href="#">Registro Academico</a></li>-->
                                 <li><a href="<?php echo site_url('estudiante/form_control_asistencia'); ?>">Registro de Asistencia</a></li>
                                 <li><a href="<?php echo site_url('estudiante/form_reporte_general'); ?>">Reporte Estudiantes</a></li>
                             </ul>
@@ -52,7 +52,7 @@
                         <li class="dropdown">
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Registro Disciplinario<span class="caret"></span></a>
                       <ul class="dropdown-menu">                              
-                                <li><a href="<?php echo site_url('estudiante/registro_disciplinario'); ?>">Control Disciplinario</a></li>
+                                <!--<li><a href="//<php echo site_url('estudiante/registro_disciplinario'); ?>">Control Disciplinario</a></li>-->
                                 <li><a href="<?php echo site_url('estudiante/form_registro_disciplinario'); ?>">Registro control Disciplinario</a></li>
                                 <li><a href="<?php echo site_url('estudiante/printReporteDisciplinario'); ?>" target="_blank">Resumen Disciplinario</a></li>
                             </ul>

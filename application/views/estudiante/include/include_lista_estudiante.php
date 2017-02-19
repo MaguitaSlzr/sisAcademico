@@ -21,9 +21,11 @@
 				<td><?php echo $e->est_fechanac;?></td>
 				<td>
 					<div class="btn-group btn-group-xs">
-						<button type="button" class="btn btn-primary" onclick="ver('<?php echo $e->est_id;?>')" title="Ver" data-toggle="modal" data-target="#modalVer">
+                                            <!--
+						<button type="button" class="btn btn-primary" onclick="ver('//--php echo $e->est_id;?>')" title="Ver" data-toggle="modal" data-target="#modalVer">
 							<span class="glyphicon glyphicon-eye-open"></span>
 						</button>
+                                            -->
 						<button type="button" class="btn btn-success" onclick="editar('<?php echo $e->est_id;?>')" title="Editar" data-toggle="modal" data-target="#modalEditarEstudiante">
 							<span class="glyphicon glyphicon-pencil"></span>
 						</button>

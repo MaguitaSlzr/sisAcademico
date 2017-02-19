@@ -34,8 +34,10 @@
 		          <?php echo $c['curso']->cur_sigla.'-'.$c['curso']->cur_paralelo; ?>
 		        </a>
 		        <div style="float:right">
-		        	<span style="margin-left:10px;">Varones</span> <span class="badge"><?php echo $c['nroVarones']; ?></span>
-		        	<span style="margin-left:10px;">Mujeres</span> <span class="badge"><?php echo $c['nroMujeres']; ?></span> 
+		        	<!--
+                                <span style="margin-left:10px;">Varones</span> <span class="badge">--?php echo $c['nroVarones']; ?></span>
+		        	<span style="margin-left:10px;">Mujeres</span> <span class="badge">--?php echo $c['nroMujeres']; ?></span> 
+                                -->
 		        	<span style="margin-left:10px;">Total</span> <span class="badge"><?php echo $c['nroVarones']+$c['nroMujeres']; ?></span>
 		        </div>
 		      </h4>

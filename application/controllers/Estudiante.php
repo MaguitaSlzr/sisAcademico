@@ -557,7 +557,9 @@ class Estudiante extends CI_Controller {
         'faltas_injustificadas'=>$this->estudiante_mdl->getNroFaltasByIdEstudiante($id,3)->nro,
         'faltas_justificadas'=>$this->estudiante_mdl->getNroFaltasByIdEstudiante($id,4)->nro,
         'permisos'=>$this->estudiante_mdl->getNroFaltasByIdEstudiante($id,5)->nro,
+        'disciplinarios'=>$this->estudiante_mdl->getDisciplinarios($id),
       );
       echo json_encode($data); 
     }
+    
 }
