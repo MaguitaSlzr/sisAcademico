@@ -463,15 +463,12 @@ class Estudiante extends CI_Controller {
 //**** INICIO CONTROL DISCIPLINARIO ****//
     public function form_registro_disciplinario() {
         $this->autenticacion();
-        $this->load->view('template/header');
-        $this->load->view('template/menu');
         $data = array(
             'faltas' => $this->estudiante_mdl->getAllTipoDisciplinario(),
             'profesores' => $this->estudiante_mdl->getAllDocentes(),
             'cursos' => $this->allEstudiantesByCurso(),
         );
         $this->load->view('estudiante/control_disciplinario.php', $data);
-        $this->load->view('template/footer');
     }
 
     public function guarda_disciplinario() {
@@ -486,6 +483,8 @@ class Estudiante extends CI_Controller {
             echo $ide."<br>";
             $this->estudiante_mdl->addDisciplinario($ide, $fecha, $falta, $relacion, $solucion);
         }
+        $this->session->set_flashdata('msg', 'Se han registrado correctamente los datos.');
+        $this->form_registro_disciplinario();
         /*
         $estudiante = strtoupper($this->input->post('estudiante'));       
 

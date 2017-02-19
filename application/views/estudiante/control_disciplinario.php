@@ -1,10 +1,20 @@
-<script type="text/javascript" src="<?php echo base_url(); ?>resources/base/js/control_disciplinario.js"></script>
+<?php $this->load->view('template/header'); ?>
+<?php $this->load->view('template/menu'); ?>
+
 <?php if (isset($mensaje)) { ?>
     <div id="mensaje" class="alert alert-success mensajesDialog" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <?php echo $mensaje; ?>
     </div>
 <?php } ?>
+
+<?php if($this->session->flashdata('msg')){ ?>
+    <div class="alert alert-success alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <?php echo $this->session->flashdata('msg'); ?>
+    </div>
+<?php } ?>
+
 <h3 class="tituloPrincipal">CONTROL DISCIPLINARIO</h3>
 <form id='formDisciplinario' action="<?php echo base_url(); ?>estudiante/guarda_disciplinario" method="post">
     <div class="row">
@@ -104,5 +114,7 @@
         </div>
     </div>
 </form>
+<?php $this->load->view('template/footer'); ?>
 <script src="<?php echo base_url(); ?>resources/base/js/jquery-ui.min.js"></script>
 <script src="<?php echo base_url(); ?>resources/estudiante/js/control_disciplinario.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>resources/base/js/control_disciplinario.js"></script>
