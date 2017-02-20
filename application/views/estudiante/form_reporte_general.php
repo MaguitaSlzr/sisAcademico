@@ -1,7 +1,7 @@
 <?php $this->load->view('template/header'); ?>
 <?php $this->load->view('template/menu'); ?>
 <h3 class="tituloPrincipal">Generar Reporte Estudiante</h3>
-<form action="#" method="post">
+<form action="<?php echo base_url('estudiante/generar_reporte_general'); ?>" method="post" target="_blank">
     <div class="row">
         <!-- begin controles de busqueda -->
         <div class="col-md-8">
@@ -139,7 +139,7 @@
                     </div>
 
                     <div class="form-group">
-                        <button type="button" class="btn btn-primary" style="float: right;">Generar Reporte</button>
+                        <button type="submit" class="btn btn-primary" style="float: right;">Generar Reporte</button>
                     </div>
                 </div>
             </div>

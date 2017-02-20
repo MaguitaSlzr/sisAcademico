@@ -6,5 +6,4 @@ function pdf_create($html, $filename='', $stream=TRUE) {
     $dompdf->load_html($html);
     $dompdf->render();
 	$dompdf->stream('FicheroEjemplo.pdf',array('Attachment'=>0));
-
 }

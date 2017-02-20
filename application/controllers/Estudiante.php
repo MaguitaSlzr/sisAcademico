@@ -560,5 +560,23 @@ class Estudiante extends CI_Controller {
       );
       echo json_encode($data); 
     }
+
+    public function generar_reporte_general(){
+      $this->autenticacion();
+      $id=$this->input->post('estudiante');
+      $data = array(
+        'titulo'=>'Reporte disciplinario y faltas',
+        'estudiante'=>$this->estudiante_mdl->findByIdEstudiante($id),
+        'atrasos'=>$this->estudiante_mdl->getNroFaltasByIdEstudiante($id,1)->nro,
+        'fugas'=>$this->estudiante_mdl->getNroFaltasByIdEstudiante($id,2)->nro,
+        'faltas_injustificadas'=>$this->estudiante_mdl->getNroFaltasByIdEstudiante($id,3)->nro,
+        'faltas_justificadas'=>$this->estudiante_mdl->getNroFaltasByIdEstudiante($id,4)->nro,
+        'permisos'=>$this->estudiante_mdl->getNroFaltasByIdEstudiante($id,5)->nro,
+        'disciplinarios'=>$this->estudiante_mdl->getDisciplinarios($id),        
+      );
+      $this->load->helper(array('dompdf', 'file'));
+      $html = $this->load->view('estudiante/reportes/print_reporte_general', $data, true);
+      pdf_create($html, 'reporte', false);
+    }
     
 }
