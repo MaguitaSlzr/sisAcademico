@@ -1,7 +1,7 @@
 html, 
 body{
     height: 100%;
-    background-image: url(../img/fondo.jpg);
+    background-image: url(../img/fondo3.bmp);
     /* Nos aseguramos que la imagen de fondo este centrada vertical y
     horizontalmente en todo momento */
     background-position: center center;
@@ -38,8 +38,10 @@ body{
     border-radius: 20px 20px 20px 20px;
     -moz-border-radius: 20px 20px 20px 20px;
     -webkit-border-radius: 20px 20px 20px 20px;
-    border: 1px solid #b5b5b5;
+    border: 1px solid #98989A; 
+    background-color: #D2D2E0;
 }
+
 .contLogoSystem{
     margin: 10px;
     position: absolute;
@@ -124,10 +126,17 @@ form label.error{
 .tituloPrincipal{
     padding: 10px 5px;
     text-align: center;
-    background: #004080;
+    //background: #004080;
+    background: #337ab7;
     color: #fff;
     /*background: #ff8000;
     color: #fff;*/
+    border-left: 6px solid navy;
+    border-right: 6px solid navy;
+    border-top: 6px solid navy;
+    border-bottom: 6px solid navy;
+    background-color: #337ab7;    
+    border-radius: 5px;
 }
 /* CARACTERISTICAS DE LA TABLA */
 .table{
